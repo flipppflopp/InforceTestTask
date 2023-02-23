@@ -31,16 +31,19 @@ namespace Services.Services
         public void Post(URL url)
         {
             _context.URLs.Add(url);
+            _context.SaveChanges();
         }
 
         public void Put(URL url) 
         {
             _context.URLs.Update(url);
+            _context.SaveChanges();
         }
 
         public void Delete(URL url) 
         {
             _context.URLs.Remove(url);
+            _context.SaveChanges();
         }
     }
 }

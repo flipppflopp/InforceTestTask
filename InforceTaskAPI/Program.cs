@@ -18,7 +18,26 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserRepository, UserService>();
 builder.Services.AddScoped<IURLRepository, URLService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+
+            //you can configure your custom policy
+            builder.AllowAnyOrigin()
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+        });
+});
+
+
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

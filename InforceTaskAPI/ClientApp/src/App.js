@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout/Layout';
+import { Login } from './components/Auth/Login';
+import { SignIn } from './components/Auth/SignIn';
+import { Home } from './components/HomePage/Home';
 import './custom.css';
 
 export default class App extends Component {
   static displayName = App.name;
 
   render() {
-    return (
-      <Layout>
-        <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
-        </Routes>
-      </Layout>
+      return (
+              <Routes>
+                  <Route index element={<Login />} />
+                  <Route path="sign-in" element={<SignIn />} />
+
+
+                  <Route path="table" element={<Layout />}>
+                      <Route path="home" element={<Home />} />
+                  </Route>
+              </Routes>
+            
     );
   }
 }
