@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InforceTaskAPI", "InforceTaskAPI.csproj", "{673F4FFA-42D7-4F8F-B78E-C8343F2B53CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB", "..\DB\DB.csproj", "{6A6F4739-9ABF-4A77-977F-ABC0F5573657}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "..\Services\Services.csproj", "{8FA8A7BF-4259-4268-B493-5977DFC640AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{673F4FFA-42D7-4F8F-B78E-C8343F2B53CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{673F4FFA-42D7-4F8F-B78E-C8343F2B53CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{673F4FFA-42D7-4F8F-B78E-C8343F2B53CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{673F4FFA-42D7-4F8F-B78E-C8343F2B53CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A6F4739-9ABF-4A77-977F-ABC0F5573657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A6F4739-9ABF-4A77-977F-ABC0F5573657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A6F4739-9ABF-4A77-977F-ABC0F5573657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A6F4739-9ABF-4A77-977F-ABC0F5573657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA8A7BF-4259-4268-B493-5977DFC640AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA8A7BF-4259-4268-B493-5977DFC640AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA8A7BF-4259-4268-B493-5977DFC640AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA8A7BF-4259-4268-B493-5977DFC640AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {817B4EC4-BE29-4854-ABDE-79286CBD8A02}
+	EndGlobalSection
+EndGlobal
