@@ -28,6 +28,18 @@ namespace Services.Services
             return _context.Users.Find(id);
         }
 
+        public User Validate(User user)
+        {
+            try
+            {
+                return _context.Users.Single<User>(c => c.Login == user.Login && c.Password == user.Password);
+            }
+            catch(Exception ex) 
+            {
+                return null;
+            }
+        }
+
         public void Post(User user)
         {
             _context.Users.Add(user);

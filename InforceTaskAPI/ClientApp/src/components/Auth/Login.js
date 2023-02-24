@@ -4,6 +4,7 @@ import './Auth.css';
 import { hostLink } from './../../HostLink';
 import axios from 'axios';
 import { navigate } from "@reach/router"
+import { Navigate } from "react-router-dom";
 
 export class Login extends Component {
     static displayName = Login.name;
@@ -11,8 +12,9 @@ export class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            pass: ''
+            Login: '',
+            Password: '',
+            Admin: false
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -21,45 +23,48 @@ export class Login extends Component {
     }
 
     handleEmailChange(event) {
-        this.setState({ email: event.target.value });
+        this.setState({
+            Login: event.target.value,
+            Password: this.state.Password
+        });
     }
 
     handlePassChange(event) {
-        this.setState({ pass: event.target.value });
+        var login = this.state.Login
+
+        this.setState({
+            Login: login,
+            Password: event.target.value
+        });
+
+        var result = this.state;
+
+        debugger
     }
 
-    handleSubmit(event) {
-        if (this.state.pass === this.state.confirmPass) {
-
-            axios.get(hostLink + `api/users/` + this.state.email)
-            .then(function (response) {
-                console.log(response);
+    handleSubmit() {
+        axios.post(hostLink + `api/users/validate`, {
+            Login: this.state.Login,
+            Password: this.state.Password,
+            Admin: false
+        }).then(response =>
+            this.setState({
+            Login: response.data.login,
+            Password: response.data.password,
+            Admin: response.data.admin
             })
+        )
 
-            navigate('/table/home', {
-                state: {
-                    Login: this.state.email,
-                    Password: this.state.pass,
-                    Admin: false
-                }
-            }
-            );
-            window.location.reload()
-        }
-        else {
-            alert("Passwords are different")
-        }
-
-
-        event.preventDefault();
+        
     }
+
+
 
 
     render() {
         return (
             <div className="Login-Form Auth-form-container">
-                <form className="Auth-form"
-                    onSubmit={this.handleSubmit}>
+                <form className="Auth-form">
                     <div className="Auth-form-content">
                         <h3 className="Auth-form-title">Login</h3>
                         <div className="text-center">
@@ -74,7 +79,7 @@ export class Login extends Component {
                                 type="email"
                                 className="form-control mt-1"
                                 placeholder="Enter email"
-                                value={this.state.email}
+                                value={this.state.Login}
                                 onChange={this.handleEmailChange}
                             />
                         </div>
@@ -84,14 +89,14 @@ export class Login extends Component {
                                 type="password"
                                 className="form-control mt-1"
                                 placeholder="Enter password"
-                                value={this.state.pass}
+                                value={this.state.Password}
                                 onChange={this.handlePassChange}
                             />
                         </div>
                         <div className="d-grid gap-2 mt-3">
-                            <button type="submit" className="btn btn-primary">
-                                Submit
-                            </button>
+                            <Link className="btn btn-primary" to="/home" onClick={this.handleSubmit()} state={this.state}>
+                                Submit 
+                            </Link>
                         </div>
                     </div>
                 </form>

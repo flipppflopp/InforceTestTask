@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { hostLink } from './../../HostLink';
 import axios from 'axios';
 import { navigate } from "@reach/router"
+import { Navigate } from "react-router-dom";
 
 export class SignIn extends Component {
     static displayName = SignIn.name;
@@ -43,7 +44,7 @@ export class SignIn extends Component {
                 Admin: false
             })
 
-            navigate('/table/home', {
+            navigate('home', {
                 state: {
                     Login: this.state.email,
                     Password: this.state.pass,
@@ -52,6 +53,7 @@ export class SignIn extends Component {
             }
             );
             window.location.reload()
+            debugger
         }
         else
         {

@@ -15,11 +15,7 @@ export default class App extends Component {
               <Routes>
                   <Route index element={<Login />} />
                   <Route path="sign-in" element={<SignIn />} />
-
-
-                  <Route path="table" element={<Layout />}>
-                      <Route path="home" element={<Home />} />
-                  </Route>
+                  <Route path="home" element={<Home />} />
               </Routes>
             
     );

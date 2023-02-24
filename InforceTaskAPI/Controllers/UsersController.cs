@@ -30,6 +30,14 @@ namespace InforceTaskAPI.Controllers
         }
 
         [HttpPost]
+        [Route("validate")]
+        public User Validate(User user)
+        {
+            User result = service.Validate(user);
+            return result;
+        }
+
+        [HttpPost]
         public void Post(User user)
         {
             service.Post(user);

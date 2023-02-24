@@ -13,6 +13,8 @@ namespace Services.Repository
 
         public User Get(int id);
 
+        public User Validate(User user);
+
         public void Post(User user);
 
         public void Put(User user);
