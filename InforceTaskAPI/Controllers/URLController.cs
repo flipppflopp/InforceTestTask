@@ -30,9 +30,9 @@ namespace InforceTaskAPI.Controllers
         }
 
         [HttpPost]
-        public void Post(URL url)
+        public URL Post(URL url)
         {
-            service.Post(url);
+            return service.Post(url);
         }
 
         [HttpPut]
@@ -42,9 +42,9 @@ namespace InforceTaskAPI.Controllers
         }
 
         [HttpDelete]
-        public void Delete(URL url)
+        public void Delete(int id)
         {
-            service.Delete(url);
+            service.Delete(id);
         }
     }
 }

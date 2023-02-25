@@ -13,10 +13,10 @@ namespace Services.Repository
 
         public URL Get(int id);
 
-        public void Post(URL url);
+        public URL Post(URL url);
 
         public void Put(URL url);
 
-        public void Delete(URL url);
+        public void Delete(int id);
     }
 }

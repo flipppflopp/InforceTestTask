@@ -28,10 +28,34 @@ namespace Services.Services
             return _context.URLs.Find(id);
         }
 
-        public void Post(URL url)
+        public URL Post(URL url)
         {
+            String urlStr = url.DefaultURL;
+            if(_context.URLs.Any<URL>(c => c.DefaultURL == urlStr) == true) 
+            {
+                return null;
+            }
+
+            int id = 0;
+
+            for (int i = 0; i < urlStr.Length; i++)
+            {
+                if ('a' <= urlStr[i] &&
+                        urlStr[i] <= 'z')
+                    id = id * 62 + urlStr[i] - 'a';
+                if ('A' <= urlStr[i] &&
+                        urlStr[i] <= 'Z')
+                    id = id * 62 + urlStr[i] - 'A' + 26;
+                if ('0' <= urlStr[i] &&
+                        urlStr[i] <= '9')
+                    id = id * 62 + urlStr[i] - '0' + 52;
+            }
+
+            url.ShourtedURL = id.ToString();
+
             _context.URLs.Add(url);
             _context.SaveChanges();
+            return _context.URLs.Single<URL>(c => c.DefaultURL == urlStr);
         }
 
         public void Put(URL url) 
@@ -40,8 +64,15 @@ namespace Services.Services
             _context.SaveChanges();
         }
 
-        public void Delete(URL url) 
+        public void Delete(int id) 
         {
+            if (_context.URLs.Any<URL>(c => c.ID == id) != true)
+            {
+                return;
+            }
+            URL url = _context.URLs.Single<URL>(c => c.ID == id);
+
+
             _context.URLs.Remove(url);
             _context.SaveChanges();
         }

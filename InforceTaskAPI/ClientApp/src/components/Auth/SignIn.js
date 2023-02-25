@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { hostLink } from './../../HostLink';
 import axios from 'axios';
 import { navigate } from "@reach/router"
-import { Navigate } from "react-router-dom";
 
 export class SignIn extends Component {
     static displayName = SignIn.name;
@@ -12,9 +11,9 @@ export class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            pass: '',
-            confirmPass: ''
+            Login: '',
+            Password: '',
+            ConfPassword: ''
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -23,37 +22,54 @@ export class SignIn extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount(){
+        localStorage.clear()
+    }
+
     handleEmailChange(event) {
-        this.setState({ email: event.target.value });
+        this.setState({ Login: event.target.value,
+                        Password: this.state.Password,
+                        ConfPassword: this.state.ConfPassword});
     }
 
     handlePassChange(event) {
-        this.setState({ pass: event.target.value });
+        this.setState({ Login: this.state.Login,
+                        Password: event.target.value,
+                        ConfPassword: this.state.ConfPassword });
     }
 
     handleConfirmPassChange(event) {
-        this.setState({ confirmPass: event.target.value });
+        this.setState({ Login: this.state.Login,
+                        Password: this.state.Password, 
+                        ConfPassword: event.target.value });
     }
 
     handleSubmit(event) {
-        if (this.state.pass === this.state.confirmPass) {
+        if (this.state.Password === this.state.ConfPassword) {
 
             axios.post(hostLink + `api/users`, {
-                Login: this.state.email,
-                Password: this.state.pass,
+                Login: this.state.Login,
+                Password: this.state.Password,
                 Admin: false
-            })
+            }).then(response =>
+                {
+                    axios.post(hostLink + `api/users/validate`, {
+                        Login: this.state.Login,
+                        Password: this.state.Password,
+                        Admin: false
+                    }).then(response =>
+                    {
+                        localStorage.clear()
 
-            navigate('home', {
-                state: {
-                    Login: this.state.email,
-                    Password: this.state.pass,
-                    Admin: false
-                }
-            }
-            );
-            window.location.reload()
-            debugger
+                        localStorage.setItem("ID", response.data.id)
+                        localStorage.setItem("Login", response.data.login) 
+                        localStorage.setItem("Password", response.data.password)
+                        localStorage.setItem("Admin", response.data.admin)
+
+                        navigate('home');
+                        window.location.reload()                    })
+
+                })
         }
         else
         {
@@ -83,7 +99,7 @@ export class SignIn extends Component {
                                 type="email"
                                 className="form-control mt-1"
                                 placeholder="Enter email"
-                                value={this.state.email}
+                                value={this.state.Login}
                                 onChange={this.handleEmailChange}
                             />
                         </div>
@@ -93,7 +109,7 @@ export class SignIn extends Component {
                                 type="password"
                                 className="form-control mt-1"
                                 placeholder="Enter password"
-                                value={this.state.pass}
+                                value={this.state.Password}
                                 onChange={this.handlePassChange}
                             />
                         </div>
@@ -103,7 +119,7 @@ export class SignIn extends Component {
                                 type="password"
                                 className="form-control mt-1"
                                 placeholder="Confirm password"
-                                value={this.state.confirmPass}
+                                value={this.state.ConfPassword}
                                 onChange={this.handleConfirmPassChange}
                             />
                         </div>
