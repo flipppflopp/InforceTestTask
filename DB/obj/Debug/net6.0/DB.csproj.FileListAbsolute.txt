@@ -26,17 +26,3 @@ C:\Users\Admin\Desktop\InforceTask\DB\obj\Debug\net6.0\refint\DB.dll
 C:\Users\Admin\Desktop\InforceTask\DB\obj\Debug\net6.0\DB.pdb
 C:\Users\Admin\Desktop\InforceTask\DB\obj\Debug\net6.0\DB.genruntimeconfig.cache
 C:\Users\Admin\Desktop\InforceTask\DB\obj\Debug\net6.0\ref\DB.dll
-C:\Users\адмін\Desktop\InforceTestTask\DB\bin\Debug\net6.0\DB.deps.json
-C:\Users\адмін\Desktop\InforceTestTask\DB\bin\Debug\net6.0\DB.runtimeconfig.json
-C:\Users\адмін\Desktop\InforceTestTask\DB\bin\Debug\net6.0\DB.dll
-C:\Users\адмін\Desktop\InforceTestTask\DB\bin\Debug\net6.0\DB.pdb
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\DB.csproj.AssemblyReference.cache
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\DB.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\DB.AssemblyInfoInputs.cache
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\DB.AssemblyInfo.cs
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\DB.csproj.CoreCompileInputs.cache
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\DB.dll
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\refint\DB.dll
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\DB.pdb
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\DB.genruntimeconfig.cache
-C:\Users\адмін\Desktop\InforceTestTask\DB\obj\Debug\net6.0\ref\DB.dll
