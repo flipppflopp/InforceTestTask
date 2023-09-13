@@ -1,11 +1,8 @@
-*/bin/
-*/obj/
-/DB/obj/
-/Services/obj/
+bin/
+obj/
+DB/obj/
+Services/obj/
 Tests/obj/
 DB/obj/Debug/net6.0/DB.assets.cache
 Services/obj/Debug/net6.0/Services.assets.cache
-DB/obj/Debug/net6.0/DB.assets.cache
-Services/obj/Debug/net6.0/Services.assets.cache
-DB/obj/Debug/net6.0/DB.assets.cache
 *.cache
