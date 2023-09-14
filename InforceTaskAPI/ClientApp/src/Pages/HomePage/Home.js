@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import { Layout } from '../Layout/Layout';
-import { hostLink } from './../../HostLink';
+import { Layout } from '../../Layout/Layout';
+import { hostLink } from './../../constants/HostLink';
 import "./Home.css"
 import { Link } from "react-router-dom";
 

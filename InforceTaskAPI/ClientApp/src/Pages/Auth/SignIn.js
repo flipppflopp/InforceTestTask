@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import './Auth.css';
 import { Link } from 'react-router-dom';
-import { hostLink } from './../../HostLink';
+import { hostLink } from './../../constants/HostLink';
 import axios from 'axios';
 import { navigate } from "@reach/router"
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Auth.css';
 import { navigate } from "@reach/router"
 import axios from 'axios';
-import { hostLink } from './../../HostLink';
+import { hostLink } from './../../constants/HostLink';
 
 export class Login extends Component {
     static displayName = Login.name;

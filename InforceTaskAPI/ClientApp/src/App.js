@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Login } from './components/Auth/Login';
-import { SignIn } from './components/Auth/SignIn';
-import { Home } from './components/HomePage/Home';
-import {ViewPage} from './components/ViewPage/ViewPage'
-import './custom.css';
+import { Login } from './Pages/Auth/Login';
+import { SignIn } from './Pages/Auth/SignIn';
+import { Home } from './Pages/HomePage/Home';
+import {ViewPage} from './Pages/ViewPage/ViewPage'
+import './assets/custom.css';
 
 export default class App extends Component {
   static displayName = App.name;

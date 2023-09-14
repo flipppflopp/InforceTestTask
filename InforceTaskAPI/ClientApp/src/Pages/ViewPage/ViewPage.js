@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import { Layout } from '../Layout/Layout';
-import { hostLink } from './../../HostLink';
+import { Layout } from '../../Layout/Layout';
+import { hostLink } from '../../constants/HostLink';
 
 export class ViewPage extends Component {
   static displayName = ViewPage.name;
@@ -14,7 +14,6 @@ export class ViewPage extends Component {
     componentDidMount()
     {
       
-      debugger
     }
 
     componentWillUnmount(){

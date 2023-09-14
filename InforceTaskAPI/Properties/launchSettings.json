@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "InforceTask": {
+    "UrlShorterApp": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7044;http://localhost:5121",
