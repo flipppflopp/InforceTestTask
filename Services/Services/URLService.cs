@@ -28,15 +28,9 @@ namespace Services.Services
             return _context.URLs.Find(id);
         }
 
-        public URL Post(URL url)
+        private int CalculateID(string urlStr, int id)
         {
-            String urlStr = url.DefaultURL;
-            if(_context.URLs.Any<URL>(c => c.DefaultURL == urlStr) == true) 
-            {
-                return null;
-            }
-
-            int id = 0;
+            int calculatedID = id;
 
             for (int i = 0; i < urlStr.Length; i++)
             {
@@ -51,14 +45,25 @@ namespace Services.Services
                     id = id * 62 + urlStr[i] - '0' + 52;
             }
 
-            url.ShourtedURL = id.ToString();
+            return id;
+        }
+
+        public URL Post(URL url)
+        {
+            String urlStr = url.DefaultURL;
+            if(_context.URLs.Any<URL>(c => c.DefaultURL == urlStr) == true) 
+            {
+                return null;
+            }
+
+            url.ShourtedURL = CalculateID(urlStr, 0).ToString();
 
             _context.URLs.Add(url);
             _context.SaveChanges();
-            return _context.URLs.Single<URL>(c => c.DefaultURL == urlStr);
+            return _context.URLs.FirstOrDefault<URL>(c => c.DefaultURL == urlStr);
         }
 
-        public void Put(URL url) 
+        public void Put(URL url)
         {
             _context.URLs.Update(url);
             _context.SaveChanges();
@@ -70,7 +75,7 @@ namespace Services.Services
             {
                 return;
             }
-            URL url = _context.URLs.Single<URL>(c => c.ID == id);
+            URL url = _context.URLs.FirstOrDefault<URL>(c => c.ID == id);
 
 
             _context.URLs.Remove(url);

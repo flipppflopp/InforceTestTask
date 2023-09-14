@@ -30,14 +30,7 @@ namespace Services.Services
 
         public User Validate(User user)
         {
-            try
-            {
-                return _context.Users.Single<User>(c => c.Login == user.Login && c.Password == user.Password);
-            }
-            catch(Exception ex) 
-            {
-                return null;
-            }
+            return _context.Users.FirstOrDefault<User>(c => c.Login == user.Login && c.Password == user.Password);
         }
 
         public void Post(User user)
