@@ -14,6 +14,8 @@ namespace DB.Context
 
         public DbSet<URL> URLs { get; set; }
 
+        public DbSet<Admin> Admins { get; set; }
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {

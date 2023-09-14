@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace DB.Models
 {
-    public class User
+    public class Admin
     {
         [Key]
         public int ID { get; set; }
 
-        public string Login { get; set; }
-
-        public string Password { get; set; }
+        public int UserID { get; set; }
     }
 }
