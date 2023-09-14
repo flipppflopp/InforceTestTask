@@ -16,7 +16,7 @@ namespace InforceTaskAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<User> Get()
+        public IEnumerable<User?> Get()
         {
             return service.Get();
         }
@@ -29,26 +29,26 @@ namespace InforceTaskAPI.Controllers
 
         [HttpPost]
         [Route("validate")]
-        public User Validate(User user)
+        public User? Validate(User user)
         {
-            User result = service.Validate(user);
+            User? result = service.Validate(user);
             return result;
         }
 
         [HttpPost]
-        public void Post(User user)
+        public void Post(User? user)
         {
             service.Post(user);
         }
 
         [HttpPut]
-        public void Put(User user)
+        public void Put(User? user)
         {
             service.Put(user);
         }
 
         [HttpDelete]
-        public void Delete(User user)
+        public void Delete(User? user)
         {
             service.Delete(user);
         }

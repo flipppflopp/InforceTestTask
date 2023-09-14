@@ -18,7 +18,7 @@ namespace Services.Services
             _context = context;
         }
 
-        public IEnumerable<User> Get()
+        public IEnumerable<User?> Get()
         {
             return _context.Users;
         }
@@ -28,24 +28,28 @@ namespace Services.Services
             return _context.Users.Find(id);
         }
 
-        public User Validate(User user)
+        public User? Validate(User user)
         {
-            return _context.Users.FirstOrDefault<User>(c => c.Login == user.Login && c.Password == user.Password);
+            return _context.Users.
+                FirstOrDefault<User>(
+                    c => 
+                        c.Login == user.Login && c.Password == user.Password
+                    );
         }
 
-        public void Post(User user)
+        public void Post(User? user)
         {
             _context.Users.Add(user);
             _context.SaveChanges();
         }
 
-        public void Put(User user)
+        public void Put(User? user)
         {
             _context.Users.Update(user);
             _context.SaveChanges();
         }
 
-        public void Delete(User user)
+        public void Delete(User? user)
         {
             _context.Users.Remove(user);
             _context.SaveChanges();

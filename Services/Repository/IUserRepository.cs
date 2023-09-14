@@ -9,16 +9,16 @@ namespace Services.Repository
 {
     public interface IUserRepository
     {
-        public IEnumerable<User> Get();
+        public IEnumerable<User?> Get();
 
         public User Get(int id);
 
-        public User Validate(User user);
+        public User? Validate(User user);
 
-        public void Post(User user);
+        public void Post(User? user);
 
-        public void Put(User user);
+        public void Put(User? user);
 
-        public void Delete(User user);
+        public void Delete(User? user);
     }
 }

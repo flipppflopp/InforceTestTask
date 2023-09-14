@@ -10,7 +10,7 @@ namespace DB.Context
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<User> Users { get ; set; }
+        public DbSet<User?> Users { get ; set; }
 
         public DbSet<URL> URLs { get; set; }
 
