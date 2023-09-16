@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Layout } from '../../Layout/Layout';
 import { hostLink } from '../../constants/HostLink';
 
-export class ViewPage extends Component {
+export default class ViewPage extends Component {
   static displayName = ViewPage.name;
     constructor(props) {
         super(props);

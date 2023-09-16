@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Login } from './Pages/Auth/Login';
-import { SignIn } from './Pages/Auth/SignIn';
-import { Home } from './Pages/HomePage/Home';
-import {ViewPage} from './Pages/ViewPage/ViewPage'
+import Login from './Pages/Auth/Login';
+import SignIn from './Pages/Auth/SignIn';
+import Home from './Pages/HomePage/Home';
+import ViewPage from './Pages/ViewPage/ViewPage'
 import './assets/custom.css';
 
 export default class App extends Component {

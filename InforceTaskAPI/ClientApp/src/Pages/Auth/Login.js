@@ -1,70 +1,42 @@
-﻿import React, { Component } from 'react';
+﻿import React, { Component, useState  } from 'react';
 import { Link } from 'react-router-dom';
 import './Auth.css';
-import { navigate } from "@reach/router"
 import axios from 'axios';
 import { hostLink } from './../../constants/HostLink';
+import { connect } from 'react-redux';
+import userActions from "./../../store/actions/userActions"
+import { useNavigate } from 'react-router-dom';
 
-export class Login extends Component {
-    static displayName = Login.name;
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            Login: '',
-            Password: ''
-        };
-
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePassChange = this.handlePassChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidMount(){
-    }
-
-    handleEmailChange(event) {
-        this.setState({
-            Login: event.target.value,
-            Password: this.state.Password
-        });        
-    }
-
-    handlePassChange(event) {
-        this.setState({
-            Login: this.state.Login,
-            Password: event.target.value
-        });        
-    }
-
-    handleSubmit(event) {
-        axios.post(hostLink + `api/users/validate`, {
-            Login: event.target[0].value,
-            Password: event.target[1].value,
-            Admin: false
-        }).then(response =>
-        {
-            localStorage.clear()
-
-            localStorage.setItem("ID", response.data.id)
-            localStorage.setItem("Login", response.data.login) 
-            localStorage.setItem("Password", response.data.password)
-            localStorage.setItem("Admin", response.data.admin)
-
-            navigate('home');
-            window.location.reload()
-        }
-        )
-        
-        
+function Login(props) {
+    const navigate = useNavigate(); // Отримати об'єкт history для переходу
   
+    const [Login, setLogin] = useState('');
+    const [Password, setPassword] = useState('');
+  
+    const handleEmailChange = (event) => {
+      setLogin(event.target.value);
     }
-
-    render() {
+  
+    const handlePassChange = (event) => {
+      setPassword(event.target.value);
+    }
+  
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+  
+      await axios.post(hostLink + `api/users/validate`, {
+        Login,
+        Password
+      }).then(response => {
+        let data = response.data
+        props.setUser(data)
+      })
+  
+      navigate("home");
+    }
         return (
             <div className='Login-Form'>
-                <form className="Auth-form"
-                    onSubmit={this.handleSubmit}>
+                <form className="Auth-form">
                     <div className="Auth-form-content">
                         <h3 className="Auth-form-title">Login</h3>
                         <div className="text-center">
@@ -79,8 +51,8 @@ export class Login extends Component {
                                 type="email"
                                 className="form-control mt-1"
                                 placeholder="Enter email"
-                                value={this.state.Login}
-                                onChange={this.handleEmailChange}
+                                value={Login}
+                                onChange={handleEmailChange}
                             />
                         </div>
                         <div className="form-group mt-3">
@@ -89,12 +61,12 @@ export class Login extends Component {
                                 type="password"
                                 className="form-control mt-1"
                                 placeholder="Enter password"
-                                value={this.state.Password}
-                                onChange={this.handlePassChange}
+                                value={Password}
+                                onChange={handlePassChange}
                             />
                         </div>
                         <div className="d-grid gap-2 mt-3">
-                            <button type="submit" value="Submit" className="btn btn-primary">
+                            <button className="btn btn-primary" onClick={handleSubmit}>
                                 Submit
                             </button>
                         </div>
@@ -103,4 +75,15 @@ export class Login extends Component {
             </div>
         );
     }
-}
+
+const mapStateToProps = (state) => ({
+    user: state.user,
+});
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      setUser: (user) => dispatch({ type: userActions.setUser, payload: user }),
+    };
+};
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
